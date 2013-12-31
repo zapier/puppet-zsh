@@ -30,7 +30,7 @@ define zsh::install($path = '/usr/bin/zsh') {
     user    => $name,
     command => 'cp .oh-my-zsh/templates/zshrc.zsh-template .zshrc',
     unless  => 'ls .zshrc',
-    require => Exec['clone_oh_my_zsh'],
+    require => Exec["clone_oh_my_zsh_$name"],
   }
 
   exec { "clone_oh_my_zsh_$name":
